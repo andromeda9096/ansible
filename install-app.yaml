@@ -1,0 +1,14 @@
+---
+- hosts: k8s
+  become: yes
+  become_user: root
+  tasks:
+
+    - name: install neofetch
+      apt:
+         name: neofetch
+         update_cache: true
+         
+      
+
+
