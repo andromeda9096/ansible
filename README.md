@@ -1,6 +1,6 @@
 # Ansible
 
-### install
+### Install Ansible
 
 ```
 git clone https://github.com/andromeda9096/ansible.git && cd ./ansible && chmod +x ./install_ansible.sh && ./install_ansible.sh -y 
