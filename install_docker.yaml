@@ -37,12 +37,12 @@
       update_cache: yes
 
   - name: add userpermissions
-    shell: "usermod -aG docker vagrant"
+    shell: "usermod -aG docker ubuntu"
 
   # Installs Docker SDK
   # --
   # 
-  # TODO: Make sure you replace user vagrant with your desired administrative
+  # TODO: Make sure you replace user ubuntu with your desired administrative
   #       username for your remote server!
   #
   - name: install python package manager
