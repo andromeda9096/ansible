@@ -1,5 +1,10 @@
 # Ansible
 
+### Generate Key on Ansible control node
+```
+ssh-keygen -t rsa -b 2048
+```
+
 ### Install Ansible
 
 ```
