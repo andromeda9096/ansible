@@ -12,7 +12,7 @@
   #
   - name: install public keys
     ansible.posix.authorized_key:
-      user: christian
+      user: root
       state: present
       key: "{{ lookup('file', '~/.ssh/ansible_id_rsa.pub') }}"
 
