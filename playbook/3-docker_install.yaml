@@ -1,0 +1,19 @@
+---
+- hosts: all
+  become: yes
+  become_user: ubuntu
+  tasks:
+
+    - name: Download docker engine installer
+      get_url: 
+        url: https://raw.githubusercontent.com/andromeda9096/docker-on-ubuntu/main/install_docker.sh
+        dest: /tmp/install_docker.sh
+        mode: 0755
+        
+    - name: Execute the install_docker.sh
+      shell: /tmp/install_docker.sh
+
+    - name: Remove the install_docker.sh
+      file: 
+        path: /tmp/install_docker.sh
+        state: absent

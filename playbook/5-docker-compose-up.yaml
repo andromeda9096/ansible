@@ -1,0 +1,32 @@
+---
+- hosts: all
+  become: true
+  become_user: ubuntu
+  tasks:
+
+    - name: Creates directory on remote server
+      file:
+        path: /home/ubuntu/docker-compose-file
+        state: directory
+        owner: ubuntu
+        group: ubuntu
+        mode: 0775
+        recurse: yes
+
+
+    - name: Copy 2 docker-compose file to remote server
+      copy:
+        src: '/home/ubuntu/docker-compose-file/{{item}}'
+        dest: '/home/ubuntu/docker-comose-file/{{item}}'
+        owner: ubuntu
+        group: ubuntu
+        mode: 0644
+      loop:
+        - docker-compose.yml
+        - docker-compose.prod.yml 
+
+    - name: Run container app
+      become: True
+      shell:
+        cmd: "docker-compose -f docker-compose.yml -f docker-compose.prod.yml  up -d"
+        chdir: /home/ubuntu/docker-comose-file/

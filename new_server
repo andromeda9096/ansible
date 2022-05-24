@@ -3,7 +3,7 @@
 
 
 [all:vars]
- ansible_ssh_user=root
+# ansible_ssh_user=root
 # ansible_password=CBC@3521
  ansible_become=yes
  ansible_become_method=sudo
