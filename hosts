@@ -42,18 +42,39 @@
 
 #db-[99:101]-node.example.com
 
-[k8s]
-192.168.3.191
-192.168.3.192
-192.168.3.193
-192.168.3.194
-192.168.3.195
-192.168.3.196
- [k8s:vars]
- ansible_private_key_file=/root/.ssh/id_rsa
- ansible_user=root
- ansible_password=yourPassword
+# [k8s]
+# 192.168.3.191
+# 192.168.3.192
+# 192.168.3.193
+# 192.168.3.194
+# 192.168.3.195
+# 192.168.3.196
+#  [k8s:vars]
+#  ansible_private_key_file=/home/admin/.ssh/id_rsa
+#  ansible_user=root
+#  #ansible_password=yourPassword
+#  ansible_become=yes
+#  ansible_become_method=sudo
+#  ansible_python_interpreter='/usr/bin/python3'
+
+[centos7]
+40.40.40.95
+40.40.40.99
+ [centos7:vars]
+ ansible_private_key_file=/home/ubuntu/.ssh/id_rsa
+ ansible_user=admin
+ #ansible_password=yourPassword
  ansible_become=yes
  ansible_become_method=sudo
  ansible_python_interpreter='/usr/bin/python3'
 
+[ubuntu]
+40.40.40.191
+40.40.40.192
+ [centos7:vars]
+ ansible_private_key_file=/home/ubuntu/.ssh/id_rsa
+ ansible_user=root
+ #ansible_password=yourPassword
+ ansible_become=yes
+ ansible_become_method=sudo
+ ansible_python_interpreter='/usr/bin/python3'
