@@ -1,11 +1,11 @@
 ---
 - name: Create New User
-  hosts: 40.40.40.191
+  hosts: 40.40.40.50
   become: true
   gather_facts: false
   vars:
 # Define your username and password here that you want to create on target hosts.
-    username: trungndm
+    username: admin
     userpass: user_password
   tasks:
     - name: Create User
@@ -28,3 +28,19 @@
       copy:
             dest: "/etc/sudoers.d/{{ username }}"
             content: "{{ username }}  ALL=(ALL)  NOPASSWD: ALL"
+# Enable PubkeyAuthentication
+   - name: Enable key Authentication
+     lineinfile:
+           dest=/etc/ssh/sshd_config
+           regexp='^PubkeyAuthentication'
+           line="PubkeyAuthentication yes"
+           state=present
+           backup=yes
+     notify:
+       - restart ssh
+ 
+   handlers:
+   - name: restart ssh
+     service:
+       name=sshd
+       state=restarted
